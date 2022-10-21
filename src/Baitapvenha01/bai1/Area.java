@@ -11,6 +11,4 @@ public class Area {
         int width = sc.nextInt();
         System.out.println("Dien tich hinh chu nhat la: " + height*width);
     }
-    
-    public void main
 }
