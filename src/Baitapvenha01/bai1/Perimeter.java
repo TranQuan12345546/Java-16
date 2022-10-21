@@ -10,4 +10,6 @@ public class Perimeter {
         int width = sc.nextInt();
         System.out.println("Chu vi hinh chu nhat la: " + (2 * (height + width)));
     }
+    
+    public void 
 }
