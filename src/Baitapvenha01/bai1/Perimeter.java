@@ -1,13 +1,9 @@
 package Baitapvenha01.bai1;
-import java.util.Scanner;
 
 public class Perimeter {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Nhap chieu dai: ");
-        int height = sc.nextInt();
-        System.out.print("Nhap chieu rong: ");
-        int width = sc.nextInt();
-        System.out.println("Chu vi hinh chu nhat la: " + (2 * (height + width)));
+        int height = 20;
+        int width = 30;
+        System.out.println("Chu vi hình chữ nhật là: " + (2 * (height + width)));
     }
 }

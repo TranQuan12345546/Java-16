@@ -4,11 +4,10 @@ import java.util.Scanner;
 
 public class Area {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Nhap chieu dai: ");
-        int height = sc.nextInt();
-        System.out.print("Nhap chieu rong: ");
-        int width = sc.nextInt();
-        System.out.println("Dien tich hinh chu nhat la: " + height*width);
+        int height = 20;
+        int width = 30;
+        System.out.println("Diện tích hình chữ nhật là: " + (height * width));
     }
 }
+
+
