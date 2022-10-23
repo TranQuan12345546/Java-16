@@ -5,7 +5,7 @@ public class timThuong {
         int a  = 10;
         int b = 4;
         double ketQua = (double) a / b;
-        System.out.println("Kết quả phép chia là: " + ketQua);
+        System.out.format("Kết quả phép chia là: %.3f", ketQua);
     }
 
 
