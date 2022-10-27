@@ -3,36 +3,18 @@ package test;
 import java.util.Scanner;
 
 public class test1 {
-    public static int nhap(){
-        Scanner input= new Scanner(System.in);
-        boolean check= false;
-        int n=0;
-        while(!check){
-            System.out.print(" ");
-            try{
-                n= input.nextInt();
-                check= true;
-            }catch(Exception e){
-                System.out.println("Ban phai nhap so! hay nhap lai...");
-                input.nextLine();
-            }
+    public static void main(String[] args) {
+        System.out.println("nhập n:");
+        int n = new Scanner(System.in).nextInt();
+        double s = 0;
+        for(int i = 1; i <= n; i++){
+            s+=(double) 1/i;
         }
-        return (n);
+        System.out.println(s);
+
+
     }
-    public static int tinhTong(long i){
-        int sum=0;
-        long n;
-        while(i!=0){
-            n= i%10;
-            sum+= n;
-            i/=10;
-            System.out.println(i);
-        }
-        return (sum);
-    }
-    public static void main(String[] args){
-        System.out.print("Nhap n");
-        int n= nhap();
-        System.out.println("Tong cua so "+n+" = " +tinhTong(n));
-    }
+
+
+
 }
