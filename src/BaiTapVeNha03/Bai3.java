@@ -8,12 +8,15 @@ public class Bai3 {
         int a = new Scanner(System.in).nextInt();
         System.out.print("Nhập b: ");
         int b = new Scanner(System.in).nextInt();
-        while (a != b) {
-            if(a > b)
-                a = a - b;
+        int x = a;
+        int y = b;
+        while (x != y) {
+            if(x > y)
+                x = x - y;
             else
-                b = b - a;
+                y = y - x;
         }
-        System.out.printf("Ước chung lớn nhất là: %d", a);
+        System.out.printf("Ước chung lớn nhất là: %d \n", x);
+        System.out.println("Bội chung nhỏ nhất là: " + ((a*b)/x));
     }
 }
