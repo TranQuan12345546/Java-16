@@ -7,6 +7,10 @@ public class Bai10 {
         System.out.print("Nhập h: ");
         int h = new Scanner(System.in).nextInt();
 
+        while (h < 0) {
+            h = Math.abs(h);
+        }
+
         for (int i = 1; i <= h; i++) {
             for (int j = 1; j <= h- i; j++) {
                 System.out.print("  ");

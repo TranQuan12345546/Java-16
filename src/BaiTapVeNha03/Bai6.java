@@ -6,6 +6,9 @@ public class Bai6 {
     public static void main(String[] args) {
         System.out.print("Nhập số nguyên a: ");
         int a = new Scanner(System.in).nextInt();
+        while (a < 0) {
+           a = Math.abs(a);
+        }
 
         int term = a;
         int ketQua = 0;

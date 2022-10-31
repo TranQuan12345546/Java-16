@@ -8,6 +8,11 @@ public class Bai12 {
         int m = new Scanner(System.in).nextInt();
         System.out.print("Nhập số n: ");
         int n = new Scanner(System.in).nextInt();
+        while (m < 0) {
+            System.out.print("Vui lòng nhập m là số tự nhiên: ");
+            m = new Scanner(System.in).nextInt();
+        }
+
         while ( m > n) {
             System.out.print("Mời nhập n lớn hơn m:");
             n = new Scanner(System.in).nextInt();
