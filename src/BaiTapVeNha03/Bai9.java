@@ -7,6 +7,7 @@ public class Bai9 {
         System.out.print("Nhập h: ");
         int h = new Scanner(System.in).nextInt();
 
+        // cách 1 (kết quả đẹp hơn cách 2)
         for (int i = 1; i <= h; i++) {
             for (int j = 1; j <= h; j++) {
                 if(i == h && j == h) {
@@ -21,6 +22,16 @@ public class Bai9 {
                     System.out.print("* ");
                 }
             }
+        }
+
+        System.out.println("\n");
+
+        // cách 2 (gọn hơn cách 1)
+        for (int i = 1; i <= h; i++) {
+            for (int j = 1; j <= i ; j++) {
+                System.out.print("* ");
+            }
+            System.out.println("");
         }
     }
 }
