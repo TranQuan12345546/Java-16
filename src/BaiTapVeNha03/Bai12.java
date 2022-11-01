@@ -19,12 +19,14 @@ public class Bai12 {
         }
 
         int S = 0;
+        System.out.printf("Số chính phương có trong khoảng [%d,%d] là: ", m,n);
         for (int i = m; i <= n ; i++) {
             double a = Math.sqrt(i);
             if (a-Math.floor(a)==0) {
+                System.out.println(i + " ");
                 S++;
             }
         }
-        System.out.printf("Số chính phương có trong khoảng [%d,%d] là %d", m,n,S );
+        System.out.printf("Có %d số chính phương trong khoảng [%d,%d]", S, m,n );
     }
 }
