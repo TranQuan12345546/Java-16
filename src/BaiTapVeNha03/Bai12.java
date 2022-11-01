@@ -27,6 +27,7 @@ public class Bai12 {
                 S++;
             }
         }
+        System.out.print("\n");
         System.out.printf("Có %d số chính phương trong khoảng [%d,%d]", S, m,n );
     }
 }
