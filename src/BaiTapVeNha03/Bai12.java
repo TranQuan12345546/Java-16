@@ -23,7 +23,7 @@ public class Bai12 {
         for (int i = m; i <= n ; i++) {
             double a = Math.sqrt(i);
             if (a-Math.floor(a)==0) {
-                System.out.println(i + " ");
+                System.out.print(i + " ");
                 S++;
             }
         }
