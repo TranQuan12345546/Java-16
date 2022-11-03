@@ -2,15 +2,13 @@ package BaiTapVeNha04;
 
 import java.util.Scanner;
 
-public class Bai26 {
+public class Bai_25 {
     public static void main(String[] args) {
-        System.out.print("Mời nhập số nguyên x: ");
-        int x = new Scanner(System.in).nextInt();
         int[] a = NhapMang();
-        SoLanXuatHien(a, x);
+        DemSo(a);
     }
 
-    public static int[] NhapMang(){
+    public static int[] NhapMang() {
         System.out.print("Mời nhập số lượng phần tử của mảng: ");
         int n = new Scanner(System.in).nextInt();
         while (n < 0) {
@@ -25,13 +23,17 @@ public class Bai26 {
         return a;
     }
 
-    public static void SoLanXuatHien(int[] arr, int x) {
-        int s = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if(arr[i] == x) {
-                s++;
+    public static void DemSo(int[] arr) {
+        int s1 = 0;
+        int s2 = 0;
+        for (int i = 0; i < arr.length ; i++) {
+            if (arr[i] % 2 == 0) {
+                s1++;
+            } else {
+                s2++;
             }
         }
-        System.out.println("Số lần xuất hiện của " + x + " trong mảng là: " + s);
+        System.out.println("Mảng có " + s1 + " số chẵn.");
+        System.out.print("Mảng có " + s2 + " số lẻ.");
     }
 }

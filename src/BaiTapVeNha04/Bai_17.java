@@ -2,7 +2,7 @@ package BaiTapVeNha04;
 
 import java.util.Scanner;
 
-public class Bai17 {
+public class Bai_17 {
     public static void main(String[] args) {
         System.out.print("Nhập m: ");
         int m = new Scanner(System.in).nextInt();

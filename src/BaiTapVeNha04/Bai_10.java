@@ -2,7 +2,7 @@ package BaiTapVeNha04;
 
 import java.util.Scanner;
 
-public class Bai10 {
+public class Bai_10 {
     public static void main(String[] args) {
         int[] arr = NhapMang();
         XuatMang(arr);

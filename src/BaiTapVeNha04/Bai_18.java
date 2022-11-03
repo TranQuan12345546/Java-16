@@ -1,6 +1,6 @@
 package BaiTapVeNha04;
 
-public class Bai18 {
+public class Bai_18 {
     public static void main(String[] args) {
         System.out.print("Các số thuận nghịch có 6 chữ số và tổng các chữ số chia hết cho 10 là: ");
         for (int i = 100000; i < 1000000; i++) {

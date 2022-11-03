@@ -2,7 +2,7 @@ package BaiTapVeNha04;
 
 import java.util.Scanner;
 
-public class Bai16 {
+public class Bai_16 {
     public static void main(String[] args) {
         System.out.print("Mời nhập số tự nhiên n: ");
         int n = new Scanner(System.in).nextInt();

@@ -2,7 +2,7 @@ package BaiTapVeNha04;
 
 import java.util.Scanner;
 
-public class Bai19 {
+public class Bai_19 {
     public static void main(String[] args) {
         int[] a = NhapMang();
         Max(a);
