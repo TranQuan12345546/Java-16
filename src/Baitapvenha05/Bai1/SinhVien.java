@@ -34,6 +34,5 @@ public class SinhVien {
         System.out.println(this.maSinhVien + " - " + this.name + " - " + this.lop + " - " + this.khoa);
     }
 
-    public void SapXepSinhVien
 
 }
