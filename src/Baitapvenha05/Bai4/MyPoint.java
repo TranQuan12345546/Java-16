@@ -5,12 +5,23 @@ public class MyPoint {
     private double y;
 
     public MyPoint() {
+        x = 0;
+        y = 0;
     }
 
     public MyPoint(double x, double y) {
         this.x = x;
         this.y = y;
     }
+
+    @Override
+    public String toString() {
+        return "MyPoint{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
+
     public MyPoint(MyPoint p) {
         this.x = p.x;
         this.y = p.y;
