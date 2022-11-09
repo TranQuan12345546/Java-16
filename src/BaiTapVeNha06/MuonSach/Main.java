@@ -55,10 +55,24 @@ public class Main {
     }
 
     private static void GetBookManager() {
-        BookManager bookManager = new BookManager();
-        bookManager.setReader(PersonBorrowBook());
-        bookManager.setBook(BookBorrow());
-        System.out.println(bookManager);
+        System.out.println("Nhập số lượt mượn sách: ");
+        int NumBorrowBook = new Scanner(System.in).nextInt();
+        for (int i = 0; i < NumBorrowBook; i++) {
+            BookManager bookManager = new BookManager();
+            bookManager.setReader(PersonBorrowBook());
+            bookManager.setBook(BookBorrow());
+            for (int j = 0; j < bookManagers.length; j++) {
+                if (bookManagers[i] == null) {
+                    bookManagers[i] = bookManager;
+                }
+            }
+        }
+
+        for (int i = 0; i < bookManagers.length; i++) {
+            if (bookManagers[i] != null) {
+                System.out.println(bookManagers[i]);
+            }
+        }
     }
 
     private static Reader PersonBorrowBook() {
