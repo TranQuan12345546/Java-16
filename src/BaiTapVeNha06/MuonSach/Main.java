@@ -1,6 +1,7 @@
 package BaiTapVeNha06.MuonSach;
 
 import BaiTapVeNha06.MuonSach.entity.Book;
+import BaiTapVeNha06.MuonSach.entity.BookManager;
 import BaiTapVeNha06.MuonSach.entity.Person;
 import BaiTapVeNha06.MuonSach.entity.Reader;
 
@@ -11,6 +12,8 @@ public class Main {
     static Book[] books = new Book[100];
     static Reader[] readers = new Reader[100];
 
+    static BookManager[] bookManagers = new BookManager[100];
+
     public static void main(String[] args) {
         while (true) {
             ShowMenu();
@@ -18,22 +21,27 @@ public class Main {
             int functionChoice;
             do {
                 functionChoice = new Scanner(System.in).nextInt();
-                if(functionChoice >= 1 && functionChoice <= 8) {
+                if (functionChoice >= 1 && functionChoice <= 8) {
                     break;
                 }
                 System.out.println("Lựa chọn không hợp lệ, vui lòng chọn lại!");
-            }while (true);
+            } while (true);
 
-            switch (functionChoice){
-                case 1: NewBook();
+            switch (functionChoice) {
+                case 1:
+                    NewBook();
                     break;
-                case 2: ShowBook();
+                case 2:
+                    ShowBook();
                     break;
-                case 3: NewReader();
+                case 3:
+                    NewReader();
                     break;
-                case 4: ShowReader();
+                case 4:
+                    ShowReader();
                     break;
                 case 5:
+                    GetBookManager();
                     break;
                 case 6:
                     break;
@@ -44,6 +52,66 @@ public class Main {
 
             }
         }
+    }
+
+    private static void GetBookManager() {
+        BookManager bookManager = new BookManager();
+        bookManager.setReader(PersonBorrowBook());
+        bookManager.setBook(BookBorrow());
+        System.out.println(bookManager);
+    }
+
+    private static Reader PersonBorrowBook() {
+        System.out.println("Mời chọn sinh viên muốn mượn sách: ");
+        ShowReader();
+
+        Reader reader = new Reader();
+        int numReader = 0;
+        for (int i = 0; i < readers.length; i++) {
+            if (readers[i] != null) {
+                numReader++;
+            }
+        }
+        int pick;
+        do {
+            pick = new Scanner(System.in).nextInt();
+            if (pick >= 1 && pick <= numReader) {
+                break;
+            }
+            System.out.println("Chọn sinh viên không hợp lệ");
+        } while (true);
+        for (int i = 0; i < readers.length; i++) {
+            if (i == pick) {
+                reader = readers[i];
+            }
+        }
+        return reader;
+    }
+    private static Book BookBorrow() {
+        System.out.println("Chọn sách muốn mượn: ");
+        ShowBook();
+
+        Book book = new Book();
+        int numBook = 0;
+        for (int i = 0; i < books.length; i++) {
+            if(books[i] != null){
+                numBook++;
+            }
+        }
+        int pick;
+        do {
+            pick = new Scanner(System.in).nextInt();
+            if(pick >= 1 && pick <= numBook) {
+                break;
+            }
+            System.out.println("Chọn sách không hợp lệ");
+        } while (true);
+        for (int i = 0; i < books.length; i++) {
+            if(i == pick) {
+                book = books[i];
+            }
+        }
+        return book;
     }
 
     private static void ShowReader() {
