@@ -3,7 +3,7 @@ package Baitapvenha05.Bai1;
 import java.util.Scanner;
 
 public class SinhVien {
-    private static int maSinhVien;
+    private int maSinhVien;
     private String name;
     private String lop;
     private String khoa;
