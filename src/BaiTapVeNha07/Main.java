@@ -39,7 +39,7 @@ public class Main {
                     driverAssignment();
                     printdriverAssignment();
                     break;
-                case 6:
+                case 6: softDriver();
                     break;
                 case 7:
                     break;
@@ -47,6 +47,40 @@ public class Main {
                     System.exit(0);
 
             }
+        }
+    }
+
+    private static void softDriver() {
+        System.out.println("Nhập lựa chọn của bạn: ");
+        System.out.println("1. Sắp xếp theo tên lái xe.");
+        System.out.println("2. Sắp xếp theo số lượng tuyến đảm nhận trong ngày (giảm dần).");
+        int choice = 0;
+        do {
+            choice = new Scanner(System.in).nextInt();
+            if (choice == 1 || choice == 2) {
+                break;
+            }
+            System.out.print("Lựa chọn không hợp lệ, vui lòng chọn lại: ");
+        } while (true);
+        if (choice == 1) { // sắp xếp theo tên bạn đọc
+            for (int i = 0; i < drivers.length - 1; i++) {
+                if (drivers[i] == null) {
+                    continue;
+                }
+                for (int j = i + 1; j < drivers.length; j++) {
+                    if (drivers[j] == null) {
+                        continue;
+                    }
+                    if (drivers[i].getName().compareTo(drivers[j].getName()) > 0) {
+                        Driver temp = drivers[i];
+                        drivers[i] = drivers[j];
+                        drivers[j] = temp;
+                    }
+                }
+            }
+            ShowDriver();
+        } else if (choice == 2) { // sắp xếp theo số lượng cuốn sách
+
         }
     }
 
