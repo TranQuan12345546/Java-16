@@ -195,7 +195,7 @@ public class Main {
         System.out.println("2. In danh sách lái xe: ");
         System.out.println("3. Nhập tuyến mới: ");
         System.out.println("4. In danh sách tuyến: ");
-        System.out.println("5. Nhập danh sách phân công cho các sinh viên và in danh sách: ");
+        System.out.println("5. Nhập danh sách phân công cho các lái xe và in danh sách: ");
         System.out.println("6. Sắp xếp danh sách các lái xe: ");
         System.out.println("7. Bảng kê tổng khoảng cách chạy xe trong ngày của mỗi lái xe: ");
         System.out.println("8. Thoát chương trình.");
