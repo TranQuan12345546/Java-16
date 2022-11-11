@@ -62,6 +62,7 @@ public class main {
             for (int j = 0; j < subjects.length; j++) {
                 if (subjects[i] == null) {
                     subjects[i] = subject;
+
                 }
             }
         }

@@ -31,7 +31,7 @@ public class Main {
 
             switch (functionChoice) {
                 case 1:
-                    Num = NewBook();
+                    NewBook();
                     break;
                 case 2:
                     ShowBook();

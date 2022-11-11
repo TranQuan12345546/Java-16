@@ -196,6 +196,7 @@ public class Main {
             for (int j = 0; j < drivers.length; j++) {
                 if (drivers[i] == null) {
                     drivers[i] = driver;
+                    break;
                 }
             }
         }
@@ -218,6 +219,7 @@ public class Main {
             for (int j = 0; j < busesS.length; j++) {
                 if (busesS[i] == null) {
                     busesS[i] = buses;
+                    break;
                 }
             }
         }
