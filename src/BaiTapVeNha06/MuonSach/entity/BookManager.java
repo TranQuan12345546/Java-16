@@ -2,7 +2,7 @@ package BaiTapVeNha06.MuonSach.entity;
 
 public class BookManager {
     private Reader reader;
-    private Book book;
+    private Book[] book;
 
     public BookManager() {
     }
@@ -15,11 +15,11 @@ public class BookManager {
         this.reader = reader;
     }
 
-    public Book getBook() {
+    public Book[] getBook() {
         return book;
     }
 
-    public void setBook(Book book) {
+    public void setBook(Book[] book) {
         this.book = book;
     }
 

@@ -14,7 +14,9 @@ public class Main {
 
     static BookManager[] bookManagers = new BookManager[100];
 
+    static int Num = 0;
     public static void main(String[] args) {
+
         while (true) {
             ShowMenu();
 
@@ -29,7 +31,7 @@ public class Main {
 
             switch (functionChoice) {
                 case 1:
-                    NewBook();
+                    Num = NewBook();
                     break;
                 case 2:
                     ShowBook();
@@ -76,7 +78,7 @@ public class Main {
     }
 
     private static Reader PersonBorrowBook() {
-        System.out.println("Mời chọn sinh viên muốn mượn sách: ");
+        System.out.println("Mời chọn người muốn mượn sách: ");
         ShowReader();
 
         Reader reader = new Reader();
@@ -89,43 +91,42 @@ public class Main {
         int pick;
         do {
             pick = new Scanner(System.in).nextInt();
-            if (pick >= 1 && pick <= numReader) {
+            if (pick >= 1 && pick <= Num) {
                 break;
             }
-            System.out.println("Chọn sinh viên không hợp lệ");
+            System.out.println("Chọn không hợp lệ");
         } while (true);
         for (int i = 0; i < readers.length; i++) {
-            if (i == pick) {
+            if (i == pick - 1) {
                 reader = readers[i];
             }
         }
         return reader;
     }
-    private static Book BookBorrow() {
-        System.out.println("Chọn sách muốn mượn: ");
-        ShowBook();
+    private static Book[] BookBorrow() {
+        System.out.println("Bạn muốn mượn bao nhiêu quyển sách?");
+        int NumBook = new Scanner(System.in).nextInt();
+        Book[] books1 = new Book[NumBook];
+        for (int i = 0; i < NumBook; i++) {
+            System.out.println("Chọn loại sách muốn mượn: ");
+            ShowBook();
 
-        Book book = new Book();
-        int numBook = 0;
-        for (int i = 0; i < books.length; i++) {
-            if(books[i] != null){
-                numBook++;
+            int pick;
+            do {
+                pick = new Scanner(System.in).nextInt();
+                if(pick >= 1 && pick <= Num) {
+                    break;
+                }
+                System.out.println("Chọn sách không hợp lệ");
+            } while (true);
+            for (int j = 0; j < books.length; j++) {
+                if(j == pick - 1) {
+                    books1[i] = books[j];
+                }
             }
+
         }
-        int pick;
-        do {
-            pick = new Scanner(System.in).nextInt();
-            if(pick >= 1 && pick <= numBook) {
-                break;
-            }
-            System.out.println("Chọn sách không hợp lệ");
-        } while (true);
-        for (int i = 0; i < books.length; i++) {
-            if(i == pick) {
-                book = books[i];
-            }
-        }
-        return book;
+        return books1;
     }
 
     private static void ShowReader() {
@@ -170,7 +171,7 @@ public class Main {
         System.out.println("8. Thoát chương trình.");
     }
 
-    private static void NewBook() {
+    private static int NewBook() {
         System.out.println("Nhập số lượng đầu sách muốn thêm: ");
         int numBook = new Scanner(System.in).nextInt();
         for (int i = 0; i < numBook; i++) {
@@ -182,6 +183,7 @@ public class Main {
                 }
             }
         }
+        return numBook;
     }
 
 
