@@ -41,12 +41,12 @@ public class Person {
                 '}';
     }
 
-    public void nhapThongTin() {
-        System.out.println("Nhập tên sinh viên: ");
+    public void ImportDriver() {
+        System.out.println("Nhập tên lái xe: ");
         this.name = new Scanner(System.in).nextLine();
-        System.out.println("Nhập địa chỉ của sinh viên: ");
+        System.out.println("Nhập địa chỉ của lái xe: ");
         this.address = new Scanner(System.in).nextLine();
-        System.out.println("Nhập SĐT sinh viên: ");
+        System.out.println("Nhập SĐT lái xe: ");
         this.phone = new Scanner(System.in).nextLine();
     }
 }
