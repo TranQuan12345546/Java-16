@@ -81,37 +81,46 @@ public class Main {
             int NumBuses = new Scanner(System.in).nextInt();
             DriverAssignmentDetail[] driverAssignmentDetails = new DriverAssignmentDetail[NumBuses];
             int count = 0;
-            for (int j = 0; j < NumBuses; j++) {
-                System.out.print("Nhập mã chuyến muốn chạy: ");
-                Buses buses = null;
-                int BusesId;
-                do {
-                    BusesId = new Scanner(System.in).nextInt();
-                    for (int k = 0; k < busesS.length; k++) {
-                        if(busesS[k].getBusesId() == BusesId){
-                            buses = busesS[k];
+            int turnNum = 0;
+
+            do {
+                for (int j = 0; j < NumBuses; j++) {
+                    System.out.print("Nhập mã chuyến muốn chạy: ");
+                    Buses buses = null;
+                    int BusesId;
+                    do {
+                        BusesId = new Scanner(System.in).nextInt();
+                        for (int k = 0; k < busesS.length; k++) {
+                            if(busesS[k].getBusesId() == BusesId){
+                                buses = busesS[k];
+                                break;
+                            }
+                        }
+                        if(buses != null) {
                             break;
                         }
-                    }
-                    if(buses != null) {
-                        break;
-                    }
-                    System.out.println("Không tìm thấy tuyến mang mã: " + BusesId + " . Vui lòng nhập lại.");
-                } while (true);
+                        System.out.println("Không tìm thấy tuyến mang mã: " + BusesId + " . Vui lòng nhập lại.");
+                    } while (true);
 
-                System.out.println("Nhập số luợt muốn chạy trên tuyến" + BusesId);
-                int turns;
-                do {
-                    turns = new Scanner(System.in).nextInt();
-                    if(turns > 0) {
-                        break;
-                    }
-                    System.out.println("Số lượt chạy không tồn tại, vui lòng nhập lại");
-                } while (true);
+                    System.out.println("Nhập số luợt muốn chạy trên tuyến" + BusesId);
+                    int turns;
+                    do {
+                        turns = new Scanner(System.in).nextInt();
+                        if(turns > 0) {
+                            turnNum += turns;
+                            break;
+                        }
+                        System.out.println("Số lượt chạy không tồn tại, vui lòng nhập lại");
+                    } while (true);
 
-                driverAssignmentDetails[count] = new DriverAssignmentDetail(buses, turns);
-                count++;
-            }
+                    driverAssignmentDetails[count] = new DriverAssignmentDetail(buses, turns);
+                    count++;
+                }
+                if (turnNum < 15) {
+                    break;
+                }
+                System.out.println("Tổng số lượt của lái xe này đã vượt quá 15. Vui lòng phân công lại");
+            } while (true);
 
             DriverAssignment driverAssignment = new DriverAssignment(driver, driverAssignmentDetails);
             saveDriverAssign(driverAssignment);
@@ -150,9 +159,9 @@ public class Main {
     }
 
     private static void ShowDriver() {
-        for (int i = 0; i < drivers.length; i++) {
-            if (drivers[i] != null) {
-                System.out.println(drivers[i]);
+        for (Driver driver : drivers) {
+            if (driver != null) {
+                System.out.println(driver);
             }
         }
     }
