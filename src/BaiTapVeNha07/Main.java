@@ -37,6 +37,7 @@ public class Main {
                     break;
                 case 5:
                     driverAssignment();
+                    printdriverAssignment();
                     break;
                 case 6:
                     break;
@@ -45,6 +46,14 @@ public class Main {
                 case 8:
                     System.exit(0);
 
+            }
+        }
+    }
+
+    private static void printdriverAssignment() {
+        for (int i = 0; i < driverAssignments.length; i++) {
+            if (driverAssignments[i] != null) {
+                System.out.println(driverAssignments[i]);
             }
         }
     }
