@@ -146,6 +146,7 @@ public class Main {
             for (int j = 0; j < readers.length; j++) {
                 if (readers[i] == null) {
                     readers[i] = reader;
+                    break;
                 }
             }
         }
@@ -180,6 +181,7 @@ public class Main {
             for (int j = 0; j < books.length; j++) {
                 if (books[i] == null) {
                     books[i] = book;
+                    break;
                 }
             }
         }
