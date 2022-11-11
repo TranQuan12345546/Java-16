@@ -62,7 +62,7 @@ public class Main {
             }
             System.out.print("Lựa chọn không hợp lệ, vui lòng chọn lại: ");
         } while (true);
-        if (choice == 1) { // sắp xếp theo tên bạn đọc
+        if (choice == 1) {
             for (int i = 0; i < drivers.length - 1; i++) {
                 if (drivers[i] == null) {
                     continue;
@@ -79,7 +79,7 @@ public class Main {
                 }
             }
             ShowDriver();
-        } else if (choice == 2)
+        } else if (choice == 2) {
 
         }
     }
