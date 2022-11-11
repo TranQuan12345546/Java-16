@@ -2,6 +2,8 @@ package BaiTapVeNha07;
 
 import BaiTapVeNha07.entity.Buses;
 import BaiTapVeNha07.entity.Driver;
+import BaiTapVeNha07.entity.DriverAssignment;
+import BaiTapVeNha07.entity.DriverAssignmentDetail;
 
 import java.util.Scanner;
 
@@ -9,6 +11,7 @@ public class Main {
 
     static Driver[] drivers = new Driver[100];
     static Buses[] busesS = new Buses[100];
+    static DriverAssignment[] driverAssignments = new DriverAssignment[100];
 
     public static void main(String[] args) {
         while (true) {
@@ -33,6 +36,7 @@ public class Main {
                 case 4: ShowBuses();
                     break;
                 case 5:
+                    driverAssignment();
                     break;
                 case 6:
                     break;
@@ -41,6 +45,84 @@ public class Main {
                 case 8:
                     System.exit(0);
 
+            }
+        }
+    }
+
+    private static void driverAssignment() {
+        if(drivers.length == 0 || busesS.length == 0) {
+            System.out.println("Bạn cần nhập thông tin tài xế và thông tin tuyến xe.");
+            return;
+        }
+
+
+        System.out.println("Số lượng lái xe cần phân công là: ");
+        int NumDriver = new Scanner(System.in).nextInt();
+
+        for (int i = 0; i < NumDriver; i++) {
+            System.out.println("Nhập mã lái xe muốn phân công: ");
+            Driver driver = null;
+            int DriverId;
+            do {
+                DriverId = new Scanner(System.in).nextInt();
+                for (int j = 0; j < drivers.length; j++) {
+                    if(DriverId == drivers[j].getDriverID()){
+                        driver = drivers[j];
+                        break;
+                    }
+                }
+                if(driver != null) {
+                    break;
+                }
+                System.out.println("Không tìm thấy tài xế mang mã: " + DriverId + " . Vui lòng nhập lại.");
+            } while (true);
+
+            System.out.println("Lái xe này muốn chạy mấy tuyến?");
+            int NumBuses = new Scanner(System.in).nextInt();
+            DriverAssignmentDetail[] driverAssignmentDetails = new DriverAssignmentDetail[NumBuses];
+            int count = 0;
+            for (int j = 0; j < NumBuses; j++) {
+                System.out.print("Nhập mã chuyến muốn chạy: ");
+                Buses buses = null;
+                int BusesId;
+                do {
+                    BusesId = new Scanner(System.in).nextInt();
+                    for (int k = 0; k < busesS.length; k++) {
+                        if(busesS[k].getBusesId() == BusesId){
+                            buses = busesS[k];
+                            break;
+                        }
+                    }
+                    if(buses != null) {
+                        break;
+                    }
+                    System.out.println("Không tìm thấy tuyến mang mã: " + BusesId + " . Vui lòng nhập lại.");
+                } while (true);
+
+                System.out.println("Nhập số luợt muốn chạy trên tuyến" + BusesId);
+                int turns;
+                do {
+                    turns = new Scanner(System.in).nextInt();
+                    if(turns > 0) {
+                        break;
+                    }
+                    System.out.println("Số lượt chạy không tồn tại, vui lòng nhập lại");
+                } while (true);
+
+                driverAssignmentDetails[count] = new DriverAssignmentDetail(buses, turns);
+                count++;
+            }
+
+            DriverAssignment driverAssignment = new DriverAssignment(driver, driverAssignmentDetails);
+            saveDriverAssign(driverAssignment);
+        }
+    }
+
+    private static void saveDriverAssign(DriverAssignment driverAssignment) {
+        for (int i = 0; i < driverAssignments.length; i++) {
+            if (driverAssignments[i] == null) {
+                driverAssignments[i] = driverAssignment;
+                break;
             }
         }
     }
