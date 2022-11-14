@@ -47,11 +47,26 @@ public class Main {
                     softSale();
                     break;
                 case 7:
-
+                    salary();
                     break;
                 case 8:
                     System.exit(0);
             }
+        }
+    }
+
+    private static void salary() {
+        int total = 0;
+        for (int i = 0; i < saleManages.length; i++) {
+            if (saleManages[i] == null) {
+                break;
+            }
+
+            Item[] item = saleManages[i].getItem();
+            for (int j = 0; j < item.length; j++) {
+                total += (item[j].getPrice() * item[j].getAmount());
+            }
+            System.out.println("Tổng lương của nhân viên " + saleManages[i].getSale().getName() + " là " + total);
         }
     }
 
@@ -137,8 +152,8 @@ public class Main {
                             term1 = false;
                             break;
                         }
-                        System.out.println("Tên mặt hàng vừa nhập không có trong danh sách mặt hàng");
                     }
+                    System.out.println("Tên mặt hàng vừa nhập không có trong danh sách mặt hàng");
                     if (j > 0) {
                         for (int k = 0; k < items1.length; k++) {
                             if (items1[k] != null && nameItem.equals(items1[k].getName())){

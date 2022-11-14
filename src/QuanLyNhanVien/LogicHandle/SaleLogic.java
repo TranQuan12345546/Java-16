@@ -57,21 +57,7 @@ public class SaleLogic {
     }
 
     public static void softByGroup() {
-        for (int i = 0; i < Main.saleManages.length - 1; i++) {
-            if (Main.saleManages[i] == null) {
-                continue;
-            }
-            for (int j = i + 1; j < Main.saleManages.length; j++) {
-                if (Main.saleManages[j] == null) {
-                    continue;
-                }
-                if (Main.saleManages[i].getSale().().compareTo(Main.saleManages[j].getSale().getName()) > 0) {
-                    SaleManage temp = Main.saleManages[i];
-                    Main.saleManages[i] = Main.saleManages[j];
-                    Main.saleManages[j] = temp;
-                }
-            }
-        }
+
         showSaleManage();
     }
 

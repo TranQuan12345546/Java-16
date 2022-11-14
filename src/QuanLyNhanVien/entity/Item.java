@@ -10,10 +10,10 @@ public class Item {
     private final int itemId;
     private String name;
     private String group;
-    private String price;
+    private int price;
     private int amount;
 
-    public Item(int itemId, String name, String group, String price, int amount) {
+    public Item(int itemId, String name, String group, int price, int amount) {
         this.itemId = itemId;
         this.name = name;
         this.group = group;
@@ -46,11 +46,11 @@ public class Item {
         this.group = group;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -79,7 +79,7 @@ public class Item {
         chooseGroup();
 
         System.out.println("Nhập giá bán mặt hàng: ");
-        this.price = new Scanner(System.in).nextLine();
+        this.price = new Scanner(System.in).nextInt();
         System.out.println("Nhập số lượng: ");
         this.amount = new Scanner(System.in).nextInt();
     }
