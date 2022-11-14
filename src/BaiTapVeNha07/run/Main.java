@@ -1,4 +1,4 @@
-package BaiTapVeNha07;
+package BaiTapVeNha07.run;
 
 import BaiTapVeNha07.entity.Buses;
 import BaiTapVeNha07.entity.Driver;
@@ -7,11 +7,14 @@ import BaiTapVeNha07.entity.DriverAssignmentDetail;
 
 import java.util.Scanner;
 
+import static BaiTapVeNha07.logic_handle.BusesLogic.*;
+import static BaiTapVeNha07.logic_handle.DriverLogic.*;
+
 public class Main {
 
-    static Driver[] drivers = new Driver[100];
-    static Buses[] busesS = new Buses[100];
-    static DriverAssignment[] driverAssignments = new DriverAssignment[100];
+    public static Driver[] drivers = new Driver[100];
+    public static Buses[] busesS = new Buses[100];
+    public static DriverAssignment[] driverAssignments = new DriverAssignment[100];
 
     public static void main(String[] args) {
         while (true) {
@@ -75,70 +78,11 @@ public class Main {
         }
     }
 
-    private static void softDriver() {
-        System.out.println("Nhập lựa chọn của bạn: ");
-        System.out.println("1. Sắp xếp theo tên lái xe.");
-        System.out.println("2. Sắp xếp theo số lượng tuyến đảm nhận trong ngày (giảm dần).");
-        System.out.println("3. Quay trở lại menu");
-        int choice;
-        do {
-            choice = new Scanner(System.in).nextInt();
-            if (choice >= 1 && choice <= 3) {
-                break;
-            }
-            System.out.print("Lựa chọn không hợp lệ, vui lòng chọn lại: ");
-        } while (true);
-        while (true) {
-            switch (choice) {
-                case 1: softByDriverName();
-                    break;
-                case 2: softByTotalTurn();
-                    break;
-                case 3:
-                    return;
-            }
-        }
-    }
 
-    private static void softByTotalTurn() {
-        for (int i = 0; i < drivers.length - 1; i++) {
-            if (drivers[i] == null) {
-                continue;
-            }
 
-            for (int j = i + 1; j < drivers.length; j++) {
-                if (drivers[j] == null) {
-                    continue;
-                }
 
-                if (driverAssignments[i].getTotalTurn() < driverAssignments[j].getTotalTurn()) {
-                    Driver max = drivers[i];
-                    drivers[i] = drivers[j];
-                    drivers[j] = max;
-                }
-            }
-        }
-        ShowDriver();
-    }
 
-    private static void softByDriverName() {
-        for (int i = 0; i < drivers.length - 1; i++) {
-            if (drivers[i] == null) {
-                continue;
-            }
-            for (int j = i + 1; j < drivers.length; j++) {
-                if (drivers[j] == null) {
-                    continue;
-                }
-                if (drivers[i].getName().compareTo(drivers[j].getName()) > 0) {
-                    Driver temp = drivers[i];
-                    drivers[i] = drivers[j];
-                    drivers[j] = temp;
-                }
-            }
-        }
-        ShowDriver();
-    }
+
 
 
     private static void printdriverAssignment() {
@@ -155,7 +99,6 @@ public class Main {
             return;
         }
 
-
         System.out.println("Số lượng lái xe cần phân công là: ");
         int NumDriver = new Scanner(System.in).nextInt();
 
@@ -165,22 +108,11 @@ public class Main {
             int DriverId;
             do {
                 DriverId = new Scanner(System.in).nextInt();
-                for (int j = 0; j < drivers.length; j++) {
-                    if (drivers[j] != null && DriverId == drivers[j].getDriverID()) {
-                        driver = drivers[j];
-                        break;
-                    }
-                }
+                driver = findDriverById(DriverId);
 
                 boolean term1 = true;
                 if (i > 0) {
-                    for (int k = 0; k < driverAssignments.length; k++) {
-                        if (driverAssignments[k] != null && DriverId == driverAssignments[k].getDriver().getDriverID()) {
-                            term1 = false;
-                            System.out.println("Tài xế có mã " + DriverId + " đã được phân công");
-                            break;
-                        }
-                    }
+                    term1 = findDriverIdValid(DriverId);
                 }
 
                 if (term1 && (driver != null)) {
@@ -194,15 +126,7 @@ public class Main {
 
             System.out.println("Lái xe này muốn chạy mấy tuyến?");
             int NumBuses;
-            int term = 0;
-            for (int j = 0; j < busesS.length; j++) {
-                if (busesS[j] != null) {
-                    term++;
-                }
-                if (busesS[i] == null) {
-                    break;
-                }
-            }
+            int term = checkBusesNumberValid();
             do {
                 NumBuses = new Scanner(System.in).nextInt();
                 if (NumBuses == 0) {
@@ -225,12 +149,7 @@ public class Main {
                     int BusesId;
                     do {
                         BusesId = new Scanner(System.in).nextInt();
-                        for (int k = 0; k < busesS.length; k++) {
-                            if (busesS[k] != null && BusesId == busesS[k].getBusesId()) {
-                                buses = busesS[k];
-                                break;
-                            }
-                        }
+                        buses = findBusesById(BusesId);
                         boolean term1 = true;
                         if (j > 0) {
                             for (int k = 0; k < driverAssignmentDetails.length; k++) {
@@ -282,7 +201,6 @@ public class Main {
         }
     }
 
-
     private static boolean checkDriverAndBuses() {
         boolean isDriver = false;
         for (int i = 0; i < drivers.length; i++) {
@@ -303,60 +221,6 @@ public class Main {
         return isBuses && isDriver;
     }
 
-    private static void saveDriverAssign(DriverAssignment driverAssignment) {
-        for (int i = 0; i < driverAssignments.length; i++) {
-            if (driverAssignments[i] == null) {
-                driverAssignments[i] = driverAssignment;
-                break;
-            }
-        }
-    }
-
-    private static void ShowBuses() {
-        for (int i = 0; i < busesS.length; i++) {
-            if (busesS[i] != null) {
-                System.out.println(busesS[i]);
-            }
-        }
-    }
-
-    private static void NewDriver() {
-        System.out.println("Nhập số lượng lái xe muốn thêm: ");
-        int numDriver = new Scanner(System.in).nextInt();
-        for (int i = 0; i < numDriver; i++) {
-            Driver driver = new Driver();
-            driver.ImportDriver();
-            for (int j = 0; j < drivers.length; j++) {
-                if (drivers[i] == null) {
-                    drivers[i] = driver;
-                    break;
-                }
-            }
-        }
-    }
-
-    private static void ShowDriver() {
-        for (Driver driver : drivers) {
-            if (driver != null) {
-                System.out.println(driver);
-            }
-        }
-    }
-
-    private static void NewBuses() {
-        System.out.println("Nhập số lượng chuyến muốn thêm: ");
-        int numBuses = new Scanner(System.in).nextInt();
-        for (int i = 0; i < numBuses; i++) {
-            Buses buses = new Buses();
-            buses.ImportBuses();
-            for (int j = 0; j < busesS.length; j++) {
-                if (busesS[i] == null) {
-                    busesS[i] = buses;
-                    break;
-                }
-            }
-        }
-    }
 
     private static void ShowMenu() {
         System.out.println("---------PHẦN MỀM QUẢN LÝ LÁI XE---------");
