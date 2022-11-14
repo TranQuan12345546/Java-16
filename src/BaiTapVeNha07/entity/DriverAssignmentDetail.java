@@ -5,6 +5,8 @@ public class DriverAssignmentDetail {
     private Buses buses;
     private int turn;
 
+
+
     public DriverAssignmentDetail(Buses buses, int turn) {
         this.buses = buses;
         this.turn = turn;

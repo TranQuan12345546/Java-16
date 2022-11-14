@@ -8,6 +8,16 @@ public class DriverAssignment {
 
     private DriverAssignmentDetail[] driverAssignmentDetails;
 
+    private int totalTurn;
+
+    public int getTotalTurn() {
+        return totalTurn;
+    }
+
+    public void setTotalTurn(int totalTurn) {
+        this.totalTurn = totalTurn;
+    }
+
     public DriverAssignment(Driver driver, DriverAssignmentDetail[] driverAssignmentDetails) {
         this.driver = driver;
         this.driverAssignmentDetails = driverAssignmentDetails;

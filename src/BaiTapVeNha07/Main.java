@@ -47,6 +47,7 @@ public class Main {
                     softDriver();
                     break;
                 case 7:
+                    summary();
                     break;
                 case 8:
                     System.exit(0);
@@ -55,39 +56,90 @@ public class Main {
         }
     }
 
+    private static void summary() {
+        int turn;
+        int distance;
+        int sum;
+        DriverAssignmentDetail[] driverAssignmentDetails;
+        for (int i = 0; i < driverAssignments.length; i++) {
+            if (driverAssignments[i] == null) {
+                break;
+            }
+
+            driverAssignmentDetails = driverAssignments[i].getDriverAssignmentDetails();
+            Driver driver = driverAssignments[i].getDriver();
+            turn = driverAssignmentDetails[i].getTurn();
+            distance = driverAssignmentDetails[i].getBuses().getDistance();
+            sum = turn + distance*2;
+            System.out.println("Tổng khoảng cách chạy xe trong ngày của tài xế có id " + driver.getDriverID() + " là: " + sum);
+        }
+    }
+
     private static void softDriver() {
         System.out.println("Nhập lựa chọn của bạn: ");
         System.out.println("1. Sắp xếp theo tên lái xe.");
         System.out.println("2. Sắp xếp theo số lượng tuyến đảm nhận trong ngày (giảm dần).");
-        int choice = 0;
+        System.out.println("3. Quay trở lại menu");
+        int choice;
         do {
             choice = new Scanner(System.in).nextInt();
-            if (choice == 1 || choice == 2) {
+            if (choice >= 1 && choice <= 3) {
                 break;
             }
             System.out.print("Lựa chọn không hợp lệ, vui lòng chọn lại: ");
         } while (true);
-        if (choice == 1) {
-            for (int i = 0; i < drivers.length - 1; i++) {
-                if (drivers[i] == null) {
-                    continue;
-                }
-                for (int j = i + 1; j < drivers.length; j++) {
-                    if (drivers[j] == null) {
-                        continue;
-                    }
-                    if (drivers[i].getName().compareTo(drivers[j].getName()) > 0) {
-                        Driver temp = drivers[i];
-                        drivers[i] = drivers[j];
-                        drivers[j] = temp;
-                    }
-                }
+        while (true) {
+            switch (choice) {
+                case 1: softByDriverName();
+                    break;
+                case 2: softByTotalTurn();
+                    break;
+                case 3:
+                    return;
             }
-            ShowDriver();
-        } else if (choice == 2) {
-
         }
     }
+
+    private static void softByTotalTurn() {
+        for (int i = 0; i < drivers.length - 1; i++) {
+            if (drivers[i] == null) {
+                continue;
+            }
+
+            for (int j = i + 1; j < drivers.length; j++) {
+                if (drivers[j] == null) {
+                    continue;
+                }
+
+                if (driverAssignments[i].getTotalTurn() < driverAssignments[j].getTotalTurn()) {
+                    Driver max = drivers[i];
+                    drivers[i] = drivers[j];
+                    drivers[j] = max;
+                }
+            }
+        }
+        ShowDriver();
+    }
+
+    private static void softByDriverName() {
+        for (int i = 0; i < drivers.length - 1; i++) {
+            if (drivers[i] == null) {
+                continue;
+            }
+            for (int j = i + 1; j < drivers.length; j++) {
+                if (drivers[j] == null) {
+                    continue;
+                }
+                if (drivers[i].getName().compareTo(drivers[j].getName()) > 0) {
+                    Driver temp = drivers[i];
+                    drivers[i] = drivers[j];
+                    drivers[j] = temp;
+                }
+            }
+        }
+        ShowDriver();
+    }
+
 
     private static void printdriverAssignment() {
         for (int i = 0; i < driverAssignments.length; i++) {
@@ -121,9 +173,9 @@ public class Main {
                 }
 
                 boolean term1 = true;
-                if (i > 0){
-                    for (int k = 1; k < NumDriver; k++) {
-                        if (DriverId == driverAssignments[k-1].getDriver().getDriverID()) {
+                if (i > 0) {
+                    for (int k = 0; k < driverAssignments.length; k++) {
+                        if (driverAssignments[k] != null && DriverId == driverAssignments[k].getDriver().getDriverID()) {
                             term1 = false;
                             System.out.println("Tài xế có mã " + DriverId + " đã được phân công");
                             break;
@@ -137,7 +189,7 @@ public class Main {
                 if (driver == null) {
                     System.out.println("Không tìm thấy tài xế mang mã: " + DriverId + " . Vui lòng nhập lại.");
                 }
-                driver = null;
+
             } while (true);
 
             System.out.println("Lái xe này muốn chạy mấy tuyến?");
@@ -160,12 +212,12 @@ public class Main {
                     break;
                 }
                 System.out.println("Số tuyến vừa nhập vượt quá số lượng tuyến hiện có");
+                term = 0;
             } while (true);
 
             DriverAssignmentDetail[] driverAssignmentDetails = new DriverAssignmentDetail[NumBuses];
             int count = 0;
             int turnNum = 0;
-
             do {
                 for (int j = 0; j < NumBuses; j++) {
                     System.out.println("Nhập mã chuyến muốn chạy: ");
@@ -181,8 +233,8 @@ public class Main {
                         }
                         boolean term1 = true;
                         if (j > 0) {
-                            for (int k = 1; k < driverAssignmentDetails.length; k++) {
-                                if (BusesId == driverAssignmentDetails[k-1].getBuses().getBusesId()) {
+                            for (int k = 0; k < driverAssignmentDetails.length; k++) {
+                                if (driverAssignmentDetails[k] != null && BusesId == driverAssignmentDetails[k].getBuses().getBusesId()) {
                                     term1 = false;
                                     System.out.println("Chuyến có mã " + BusesId + " đã được phân công");
                                     break;
@@ -190,7 +242,7 @@ public class Main {
                             }
                         }
 
-                        if ((buses != null) && term1){
+                        if ((buses != null) && term1) {
                             break;
                         }
 
@@ -224,10 +276,11 @@ public class Main {
             } while (true);
 
             DriverAssignment driverAssignment = new DriverAssignment(driver, driverAssignmentDetails);
+            driverAssignment.setTotalTurn(turnNum);
             saveDriverAssign(driverAssignment);
+
         }
     }
-
 
 
     private static boolean checkDriverAndBuses() {
