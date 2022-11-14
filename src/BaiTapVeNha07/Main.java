@@ -20,26 +20,31 @@ public class Main {
             int functionChoice;
             do {
                 functionChoice = new Scanner(System.in).nextInt();
-                if(functionChoice >= 1 && functionChoice <= 8) {
+                if (functionChoice >= 1 && functionChoice <= 8) {
                     break;
                 }
                 System.out.println("Lựa chọn không hợp lệ, vui lòng chọn lại!");
-            }while (true);
+            } while (true);
 
-            switch (functionChoice){
-                case 1: NewDriver();
+            switch (functionChoice) {
+                case 1:
+                    NewDriver();
                     break;
-                case 2: ShowDriver();
+                case 2:
+                    ShowDriver();
                     break;
-                case 3: NewBuses();
+                case 3:
+                    NewBuses();
                     break;
-                case 4: ShowBuses();
+                case 4:
+                    ShowBuses();
                     break;
                 case 5:
                     driverAssignment();
                     printdriverAssignment();
                     break;
-                case 6: softDriver();
+                case 6:
+                    softDriver();
                     break;
                 case 7:
                     break;
@@ -93,7 +98,7 @@ public class Main {
     }
 
     private static void driverAssignment() {
-        if(drivers.length == 0 || busesS.length == 0) {
+        if (!checkDriverAndBuses()) {
             System.out.println("Bạn cần nhập thông tin tài xế và thông tin tuyến xe.");
             return;
         }
@@ -109,47 +114,98 @@ public class Main {
             do {
                 DriverId = new Scanner(System.in).nextInt();
                 for (int j = 0; j < drivers.length; j++) {
-                    if(DriverId == drivers[j].getDriverID()){
+                    if (drivers[j] != null && DriverId == drivers[j].getDriverID()) {
                         driver = drivers[j];
                         break;
                     }
                 }
-                if(driver != null) {
+
+                boolean term1 = true;
+                if (i > 0){
+                    for (int k = 1; k < NumDriver; k++) {
+                        if (DriverId == driverAssignments[k-1].getDriver().getDriverID()) {
+                            term1 = false;
+                            System.out.println("Tài xế có mã " + DriverId + " đã được phân công");
+                            break;
+                        }
+                    }
+                }
+
+                if (term1 && (driver != null)) {
                     break;
                 }
-                System.out.println("Không tìm thấy tài xế mang mã: " + DriverId + " . Vui lòng nhập lại.");
+                if (driver == null) {
+                    System.out.println("Không tìm thấy tài xế mang mã: " + DriverId + " . Vui lòng nhập lại.");
+                }
+                driver = null;
             } while (true);
 
             System.out.println("Lái xe này muốn chạy mấy tuyến?");
-            int NumBuses = new Scanner(System.in).nextInt();
+            int NumBuses;
+            int term = 0;
+            for (int j = 0; j < busesS.length; j++) {
+                if (busesS[j] != null) {
+                    term++;
+                }
+                if (busesS[i] == null) {
+                    break;
+                }
+            }
+            do {
+                NumBuses = new Scanner(System.in).nextInt();
+                if (NumBuses == 0) {
+                    System.out.println("Vui lòng nhập số lượng chuyến lớn hơn 0");
+                }
+                if (NumBuses <= term) {
+                    break;
+                }
+                System.out.println("Số tuyến vừa nhập vượt quá số lượng tuyến hiện có");
+            } while (true);
+
             DriverAssignmentDetail[] driverAssignmentDetails = new DriverAssignmentDetail[NumBuses];
             int count = 0;
             int turnNum = 0;
 
             do {
                 for (int j = 0; j < NumBuses; j++) {
-                    System.out.print("Nhập mã chuyến muốn chạy: ");
+                    System.out.println("Nhập mã chuyến muốn chạy: ");
                     Buses buses = null;
                     int BusesId;
                     do {
                         BusesId = new Scanner(System.in).nextInt();
                         for (int k = 0; k < busesS.length; k++) {
-                            if(busesS[k].getBusesId() == BusesId){
+                            if (busesS[k] != null && BusesId == busesS[k].getBusesId()) {
                                 buses = busesS[k];
                                 break;
                             }
                         }
-                        if(buses != null) {
+                        boolean term1 = true;
+                        if (j > 0) {
+                            for (int k = 1; k < driverAssignmentDetails.length; k++) {
+                                if (BusesId == driverAssignmentDetails[k-1].getBuses().getBusesId()) {
+                                    term1 = false;
+                                    System.out.println("Chuyến có mã " + BusesId + " đã được phân công");
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ((buses != null) && term1){
                             break;
                         }
-                        System.out.println("Không tìm thấy tuyến mang mã: " + BusesId + " . Vui lòng nhập lại.");
+
+                        if (buses == null) {
+                            System.out.println("Không tìm thấy chuyến mang mã: " + BusesId + " . Vui lòng nhập lại.");
+                        }
+                        buses = null;
                     } while (true);
 
-                    System.out.println("Nhập số luợt muốn chạy trên tuyến" + BusesId);
+
+                    System.out.print("Nhập số luợt muốn chạy trên tuyến " + BusesId + ": ");
                     int turns;
                     do {
                         turns = new Scanner(System.in).nextInt();
-                        if(turns > 0) {
+                        if (turns > 0) {
                             turnNum += turns;
                             break;
                         }
@@ -159,15 +215,39 @@ public class Main {
                     driverAssignmentDetails[count] = new DriverAssignmentDetail(buses, turns);
                     count++;
                 }
-                if (turnNum < 15) {
+                if (turnNum <= 15) {
                     break;
                 }
                 System.out.println("Tổng số lượt của lái xe này đã vượt quá 15. Vui lòng phân công lại");
+                turnNum = 0;
+                count = 0;
             } while (true);
 
             DriverAssignment driverAssignment = new DriverAssignment(driver, driverAssignmentDetails);
             saveDriverAssign(driverAssignment);
         }
+    }
+
+
+
+    private static boolean checkDriverAndBuses() {
+        boolean isDriver = false;
+        for (int i = 0; i < drivers.length; i++) {
+            if (drivers[i] != null) {
+                isDriver = true;
+                break;
+            }
+        }
+
+        boolean isBuses = false;
+        for (int i = 0; i < busesS.length; i++) {
+            if (busesS[i] != null) {
+                isBuses = true;
+                break;
+            }
+        }
+
+        return isBuses && isDriver;
     }
 
     private static void saveDriverAssign(DriverAssignment driverAssignment) {

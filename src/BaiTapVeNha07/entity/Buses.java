@@ -14,8 +14,8 @@ public class Buses {
         BUSES_ID++;
     }
 
-    public static int getBusesId() {
-        return BUSES_ID;
+    public int getBusesId() {
+        return busesId;
     }
 
     public int getDistance() {
