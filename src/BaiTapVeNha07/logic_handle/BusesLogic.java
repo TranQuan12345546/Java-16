@@ -5,14 +5,12 @@ import BaiTapVeNha07.entity.Buses;
 
 import java.util.Scanner;
 
-import static BaiTapVeNha07.run.Main.busesS;
-
 public class BusesLogic {
     public static Buses findBusesById(int id) {
         Buses buses = null;
-        for (int k = 0; k < busesS.length; k++) {
-            if (busesS[k] != null && id == busesS[k].getBusesId()) {
-                buses = busesS[k];
+        for (int k = 0; k < Main.busesS.length; k++) {
+            if (Main.busesS[k] != null && id == Main.busesS[k].getBusesId()) {
+                buses = Main.busesS[k];
                 break;
             }
         }
@@ -21,11 +19,11 @@ public class BusesLogic {
 
     public static int checkBusesNumberValid() {
         int term = 0;
-        for (int j = 0; j < busesS.length; j++) {
-            if (busesS[j] != null) {
+        for (int j = 0; j < Main.busesS.length; j++) {
+            if (Main.busesS[j] != null) {
                 term++;
             }
-            if (busesS[j] == null) {
+            if (Main.busesS[j] == null) {
                 break;
             }
         }
@@ -33,9 +31,9 @@ public class BusesLogic {
     }
 
     public static void ShowBuses() {
-        for (int i = 0; i < busesS.length; i++) {
-            if (busesS[i] != null) {
-                System.out.println(busesS[i]);
+        for (int i = 0; i < Main.busesS.length; i++) {
+            if (Main.busesS[i] != null) {
+                System.out.println(Main.busesS[i]);
             }
         }
     }
@@ -46,9 +44,9 @@ public class BusesLogic {
         for (int i = 0; i < numBuses; i++) {
             Buses buses = new Buses();
             buses.ImportBuses();
-            for (int j = 0; j < busesS.length; j++) {
-                if (busesS[i] == null) {
-                    busesS[i] = buses;
+            for (int j = 0; j < Main.busesS.length; j++) {
+                if (Main.busesS[i] == null) {
+                    Main.busesS[i] = buses;
                     break;
                 }
             }

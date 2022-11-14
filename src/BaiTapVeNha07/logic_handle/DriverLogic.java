@@ -2,17 +2,18 @@ package BaiTapVeNha07.logic_handle;
 
 import BaiTapVeNha07.entity.Driver;
 import BaiTapVeNha07.entity.DriverAssignment;
+import BaiTapVeNha07.run.Main;
 
 import java.util.Scanner;
 
-import static BaiTapVeNha07.run.Main.driverAssignments;
-import static BaiTapVeNha07.run.Main.drivers;
+
+
 
 public class DriverLogic {
     public static boolean findDriverIdValid(int id) {
         boolean term1 = true;
-        for (int k = 0; k < driverAssignments.length; k++) {
-            if (driverAssignments[k] != null && id == driverAssignments[k].getDriver().getDriverID()) {
+        for (int k = 0; k < Main.driverAssignments.length; k++) {
+            if (Main.driverAssignments[k] != null && id == Main.driverAssignments[k].getDriver().getDriverID()) {
                 term1 = false;
                 System.out.println("Tài xế có mã " + id + " đã được phân công");
                 break;
@@ -23,9 +24,9 @@ public class DriverLogic {
 
     public static Driver findDriverById(int id) {
         Driver driver = null;
-        for (int j = 0; j < drivers.length; j++) {
-            if (drivers[j] != null && id == drivers[j].getDriverID()) {
-                driver = drivers[j];
+        for (int j = 0; j < Main.drivers.length; j++) {
+            if (Main.drivers[j] != null && id == Main.drivers[j].getDriverID()) {
+                driver = Main.drivers[j];
                 break;
             }
         }
@@ -38,9 +39,9 @@ public class DriverLogic {
         for (int i = 0; i < numDriver; i++) {
             Driver driver = new Driver();
             driver.ImportDriver();
-            for (int j = 0; j < drivers.length; j++) {
-                if (drivers[i] == null) {
-                    drivers[i] = driver;
+            for (int j = 0; j < Main.drivers.length; j++) {
+                if (Main.drivers[i] == null) {
+                    Main.drivers[i] = driver;
                     break;
                 }
             }
@@ -48,7 +49,7 @@ public class DriverLogic {
     }
 
     public static void ShowDriver() {
-        for (Driver driver : drivers) {
+        for (Driver driver : Main.drivers) {
             if (driver != null) {
                 System.out.println(driver);
             }
@@ -56,9 +57,9 @@ public class DriverLogic {
     }
 
     public static void saveDriverAssign(DriverAssignment driverAssignment) {
-        for (int i = 0; i < driverAssignments.length; i++) {
-            if (driverAssignments[i] == null) {
-                driverAssignments[i] = driverAssignment;
+        for (int i = 0; i < Main.driverAssignments.length; i++) {
+            if (Main.driverAssignments[i] == null) {
+                Main.driverAssignments[i] = driverAssignment;
                 break;
             }
         }
@@ -90,20 +91,20 @@ public class DriverLogic {
     }
 
     public static void softByTotalTurn() {
-        for (int i = 0; i < drivers.length - 1; i++) {
-            if (drivers[i] == null) {
+        for (int i = 0; i < Main.drivers.length - 1; i++) {
+            if (Main.drivers[i] == null) {
                 continue;
             }
 
-            for (int j = i + 1; j < drivers.length; j++) {
-                if (drivers[j] == null) {
+            for (int j = i + 1; j < Main.drivers.length; j++) {
+                if (Main.drivers[j] == null) {
                     continue;
                 }
 
-                if (driverAssignments[i].getTotalTurn() < driverAssignments[j].getTotalTurn()) {
-                    Driver max = drivers[i];
-                    drivers[i] = drivers[j];
-                    drivers[j] = max;
+                if (Main.driverAssignments[i].getTotalTurn() < Main.driverAssignments[j].getTotalTurn()) {
+                    Driver max = Main.drivers[i];
+                    Main.drivers[i] = Main.drivers[j];
+                    Main.drivers[j] = max;
                 }
             }
         }
@@ -111,18 +112,18 @@ public class DriverLogic {
     }
 
     public static void softByDriverName() {
-        for (int i = 0; i < drivers.length - 1; i++) {
-            if (drivers[i] == null) {
+        for (int i = 0; i < Main.drivers.length - 1; i++) {
+            if (Main.drivers[i] == null) {
                 continue;
             }
-            for (int j = i + 1; j < drivers.length; j++) {
-                if (drivers[j] == null) {
+            for (int j = i + 1; j < Main.drivers.length; j++) {
+                if (Main.drivers[j] == null) {
                     continue;
                 }
-                if (drivers[i].getName().compareTo(drivers[j].getName()) > 0) {
-                    Driver temp = drivers[i];
-                    drivers[i] = drivers[j];
-                    drivers[j] = temp;
+                if (Main.drivers[i].getName().compareTo(Main.drivers[j].getName()) > 0) {
+                    Driver temp = Main.drivers[i];
+                    Main.drivers[i] = Main.drivers[j];
+                    Main.drivers[j] = temp;
                 }
             }
         }

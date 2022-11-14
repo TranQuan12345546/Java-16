@@ -4,11 +4,11 @@ import BaiTapVeNha07.entity.Buses;
 import BaiTapVeNha07.entity.Driver;
 import BaiTapVeNha07.entity.DriverAssignment;
 import BaiTapVeNha07.entity.DriverAssignmentDetail;
+import BaiTapVeNha07.logic_handle.BusesLogic;
+import BaiTapVeNha07.logic_handle.DriverLogic;
 
 import java.util.Scanner;
 
-import static BaiTapVeNha07.logic_handle.BusesLogic.*;
-import static BaiTapVeNha07.logic_handle.DriverLogic.*;
 
 public class Main {
 
@@ -31,23 +31,23 @@ public class Main {
 
             switch (functionChoice) {
                 case 1:
-                    NewDriver();
+                    DriverLogic.NewDriver();
                     break;
                 case 2:
-                    ShowDriver();
+                    DriverLogic.ShowDriver();
                     break;
                 case 3:
-                    NewBuses();
+                    BusesLogic.NewBuses();
                     break;
                 case 4:
-                    ShowBuses();
+                    BusesLogic.ShowBuses();
                     break;
                 case 5:
                     driverAssignment();
                     printdriverAssignment();
                     break;
                 case 6:
-                    softDriver();
+                    DriverLogic.softDriver();
                     break;
                 case 7:
                     summary();
@@ -108,11 +108,11 @@ public class Main {
             int DriverId;
             do {
                 DriverId = new Scanner(System.in).nextInt();
-                driver = findDriverById(DriverId);
+                driver = DriverLogic.findDriverById(DriverId);
 
                 boolean term1 = true;
                 if (i > 0) {
-                    term1 = findDriverIdValid(DriverId);
+                    term1 = DriverLogic.findDriverIdValid(DriverId);
                 }
 
                 if (term1 && (driver != null)) {
@@ -126,7 +126,7 @@ public class Main {
 
             System.out.println("Lái xe này muốn chạy mấy tuyến?");
             int NumBuses;
-            int term = checkBusesNumberValid();
+            int term = BusesLogic.checkBusesNumberValid();
             do {
                 NumBuses = new Scanner(System.in).nextInt();
                 if (NumBuses == 0) {
@@ -149,7 +149,7 @@ public class Main {
                     int BusesId;
                     do {
                         BusesId = new Scanner(System.in).nextInt();
-                        buses = findBusesById(BusesId);
+                        buses = BusesLogic.findBusesById(BusesId);
                         boolean term1 = true;
                         if (j > 0) {
                             for (int k = 0; k < driverAssignmentDetails.length; k++) {
@@ -196,7 +196,7 @@ public class Main {
 
             DriverAssignment driverAssignment = new DriverAssignment(driver, driverAssignmentDetails);
             driverAssignment.setTotalTurn(turnNum);
-            saveDriverAssign(driverAssignment);
+            DriverLogic.saveDriverAssign(driverAssignment);
 
         }
     }
