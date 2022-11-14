@@ -152,8 +152,8 @@ public class Main {
                             term1 = false;
                             break;
                         }
+                        System.out.println("Tên mặt hàng vừa nhập không có trong danh sách mặt hàng");
                     }
-                    System.out.println("Tên mặt hàng vừa nhập không có trong danh sách mặt hàng");
                     if (j > 0) {
                         for (int k = 0; k < items1.length; k++) {
                             if (items1[k] != null && nameItem.equals(items1[k].getName())){
