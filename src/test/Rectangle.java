@@ -1,12 +1,16 @@
 package test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Rectangle {
     public static void main(String[] args) {
-        HinhChuNhat hinhChuNhat = new HinhChuNhat(3,4);
-        hinhChuNhat.tinhChuVi();
-        hinhChuNhat.tinhDienTich();
-        int nnext = new Scanner(System.in).nextInt();
+        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(1,2,3,4));
+        ArrayList<Integer> list1 = new ArrayList<>(Arrays.asList(1,2,3,4,6,7));
+        list.removeAll(list1);
+        for (int i : list) {
+            System.out.println(i);
+        }
     }
 }

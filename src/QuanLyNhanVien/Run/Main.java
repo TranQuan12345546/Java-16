@@ -140,29 +140,29 @@ public class Main {
 
             Item[] items1 = new Item[numItemSold];
             for (int j = 0; j < numItemSold; j++) {
-                System.out.println("Tên mặt hàng mà nhân viên đã bán: ");
-                String nameItem;
+                System.out.println("Chọn mặt hàng mà nhân viên đã bán: ");
+                int nameItem;
                 int term = 0;
                 boolean term1 = true;
-                do {
-                    nameItem = new Scanner(System.in).nextLine();
-                    for (int k = 0; k < items.length; k++) {
-                        if (items[k] != null && nameItem.equals(items[k].getName())) {
-                            term = k;
-                            term1 = false;
-                            break;
-                        }
-                        System.out.println("Tên mặt hàng vừa nhập không có trong danh sách mặt hàng");
-                    }
-                    if (j > 0) {
-                        for (int k = 0; k < items1.length; k++) {
-                            if (items1[k] != null && nameItem.equals(items1[k].getName())){
-                                System.out.println("Mặt hàng này đã được thêm rồi.");
-                                term1 = true;
-                            }
-                        }
-                    }
-                } while (term1);
+//                do {
+//                    nameItem = new Scanner(System.in).nextInt();
+//                    for (int k = 0; k < items.length; k++) {
+//                        if (items[k] != null && nameItem.equals(items[k].getName())) {
+//                            term = k;
+//                            term1 = false;
+//                            break;
+//                        }
+//                        System.out.println("Tên mặt hàng vừa nhập không có trong danh sách mặt hàng");
+//                    }
+//                    if (j > 0) {
+//                        for (int k = 0; k < items1.length; k++) {
+//                            if (items1[k] != null && nameItem.equals(items1[k].getName())){
+//                                System.out.println("Mặt hàng này đã được thêm rồi.");
+//                                term1 = true;
+//                            }
+//                        }
+//                    }
+//                } while (term1);
 
 
                 System.out.print("Số lượng mặt hàng này mà nhân viên bán được: ");
