@@ -13,7 +13,7 @@ public class Main {
             int choice;
             do {
                 choice = new Scanner(System.in).nextInt();
-                if (choice >= 1 && choice <= 6) {
+                if (choice >= 1 && choice <= 4) {
                     break;
                 }
                 System.out.println("Lựa chọn không hợp lệ, vui lòng chọn lại.");
@@ -27,15 +27,9 @@ public class Main {
                     showProduct();
                     break;
                 case 3:
-                    deleteProduct();
-                    break;
-                case 4:
-                    updateNumProduct();
-                    break;
-                case 5:
                     findProduct();
                     break;
-                case 6:
+                case 4:
                     System.exit(0);
         }
 
@@ -64,10 +58,64 @@ public class Main {
                 break;
             case 2: findIdProduct();
                 break;
-            case 3:
+            case 3: findProductLessThan5();
                 break;
-            case 4:
+            case 4: findProductPrice();
                 break;
+        }
+    }
+
+    private static void findProductPrice() {
+        System.out.println("Chọn mức giá: ");
+        System.out.println("Dưới 50.000");
+        System.out.println("Từ 50.000 đến dưới 100.000");
+        System.out.println("Từ 100.000 trở lên");
+
+        int choose = new Scanner(System.in).nextInt();
+        switch (choose) {
+            case 1: findCase1();
+                break;
+            case 2: findCase2();
+                break;
+            case 3: findCase3();
+                break;
+        }
+
+    }
+
+    private static void findCase3() {
+        for (Product i : products) {
+            int price = i.getPrice();
+            if (price >= 100000) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    private static void findCase2() {
+        for (Product i : products) {
+            int price = i.getPrice();
+            if (price >= 50000 && price <= 100000) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    private static void findCase1() {
+        for (Product i : products) {
+            int price = i.getPrice();
+            if (price < 50000) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    private static void findProductLessThan5() {
+        for (Product i : products) {
+            int num = i.getNumber();
+            if (num < 5) {
+                System.out.println(i);
+            }
         }
     }
 
@@ -140,9 +188,7 @@ public class Main {
         System.out.println("-------CHƯƠNG TRÌNH QUẢN LÝ CỬA HÀNG-------");
         System.out.println("1. THÊM SẢN PHẨM");
         System.out.println("2. XEM DANH SÁCH SẢN PHẨM");
-        System.out.println("3. XOÁ SẢN PHẨM");
-        System.out.println("4. CẬP NHẬT SỐ LƯỢNG SẢN PHẨM");
-        System.out.println("5. TÌM KIẾM SẢN PHẨM");
-        System.out.println("6. THOÁT CHƯƠNG TRÌNH");
+        System.out.println("3. TÌM KIẾM SẢN PHẨM");
+        System.out.println("4. THOÁT CHƯƠNG TRÌNH");
     }
 }
