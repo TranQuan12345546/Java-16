@@ -14,7 +14,6 @@ public class Main {
             members.add(member);
         }
 
-
         for (Member i : members) {
             System.out.println(i);
         }
