@@ -55,12 +55,12 @@ public class Driver extends Person{
             System.out.println("Không hợp lệ, vui lòng chọn lại: ");
         } while (true);
         switch (numCategories) {
-            case 1 -> this.level = levelCons.A.value;
-            case 2 -> this.level = levelCons.B.value;
-            case 3 -> this.level = levelCons.C.value;
-            case 4 -> this.level = levelCons.D.value;
-            case 5 -> this.level = levelCons.E.value;
-            case 6 -> this.level = levelCons.F.value;
+//            case 1 -> this.level = levelCons.A.value;
+//            case 2 -> this.level = levelCons.B.value;
+//            case 3 -> this.level = levelCons.C.value;
+//            case 4 -> this.level = levelCons.D.value;
+//            case 5 -> this.level = levelCons.E.value;
+//            case 6 -> this.level = levelCons.F.value;
         }
     }
 }

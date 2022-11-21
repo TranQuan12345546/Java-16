@@ -79,9 +79,9 @@ public class Subject {
             System.out.println("Không hợp lệ, vui lòng chọn lại: ");
         } while (true);
         switch (numCategories) {
-            case 1 -> this.typeSub = TypeSub.DAICUONG;
-            case 2 -> this.typeSub = TypeSub.COSONGANH;
-            case 3 -> this.typeSub = TypeSub.CHUYENNGANH;
+//            case 1 -> this.typeSub = TypeSub.DAICUONG;
+//            case 2 -> this.typeSub = TypeSub.COSONGANH;
+//            case 3 -> this.typeSub = TypeSub.CHUYENNGANH;
         }
     }
 }
