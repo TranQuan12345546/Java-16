@@ -5,12 +5,14 @@ import java.util.Scanner;
 
 public class Main {
     static TechMaster techMaster;
+    static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         while (true) {
             showMenu();
-            int choose = new Scanner(System.in).nextInt();
+            int choose;
             do {
-                if (choose >=1 && choose <= 6) {
+                choose = Integer.parseInt(sc.nextLine());
+                if (choose >= 1 && choose <= 6) {
                     break;
                 }
                 System.out.println("Lựa chọn không hợp lệ, vui lòng nhập lại.");
@@ -56,7 +58,7 @@ public class Main {
             do {
                 try {
                     System.out.println("Nhập mã học viên cần xoá: ");
-                    num = Integer.parseInt(new Scanner(System.in).nextLine());
+                    num = Integer.parseInt(sc.nextLine());
                     if (num < 100) {
                         System.out.println("Không tồn tại mã học viên này");
                     }
@@ -91,7 +93,7 @@ public class Main {
             do {
                 try {
                     System.out.println("Nhập mã học viên cần sửa thông tin: ");
-                    num = Integer.parseInt(new Scanner(System.in).nextLine());
+                    num = Integer.parseInt(sc.nextLine());
                     if (num < 100) {
                         System.out.println("Không tồn tại mã học viên này");
                     }
@@ -125,7 +127,7 @@ public class Main {
         lecture.inputInfo();
         ClassTech classTech = new ClassTech();
         classTech.inputClass();
-        TechMaster techMaster = new TechMaster(manager, lecture, classTech);
+        techMaster = new TechMaster(manager, lecture, classTech);
         return techMaster;
     }
 }

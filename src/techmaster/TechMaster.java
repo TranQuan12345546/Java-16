@@ -38,8 +38,8 @@ public class TechMaster {
     @Override
     public String toString() {
         return "TechMaster{" +
-                "manager=" + manager +
-                ", lecture=" + lecture +
+                "manager=" + manager + "\n" +
+                ", lecture=" + lecture + "\n" +
                 ", classTech=" + classTech +
                 '}';
     }
