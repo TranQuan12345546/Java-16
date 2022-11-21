@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class Person {
     public static int STUDENT_ID = 100;
 
-    private final int id;
-    private String name;
-    private int age;
+    protected final int id;
+    protected String name;
+    protected int age;
 
     public Person() {
         this.id = STUDENT_ID;

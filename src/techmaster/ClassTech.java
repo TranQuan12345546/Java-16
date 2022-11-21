@@ -32,10 +32,22 @@ public class ClassTech {
     }
 
     public void inputClass() {
+        System.out.println("Nhập môn học: ");
         this.subject = new Scanner(System.in).nextLine();
         ArrayList<Student> students = new ArrayList<>();
-        System.out.println("Số lượng học viên trong lớp là: ");
-        int num = new Scanner(System.in).nextInt();
+        int num = 0;
+        do {
+            try {
+                System.out.println("Số lượng học viên trong lớp là: ");
+                num = new Scanner(System.in).nextInt();
+                if (num <= 0) {
+                    System.out.println("Số lượng học viên phải lớn hơn 0");
+                }
+            } catch (Exception e) {
+                System.out.println("Bạn cần nhập vào 1 số tự nhiên");
+            }
+
+        } while (num <= 0);
         for (int i = 1; i <= num; i++) {
             Student student = new Student();
             student.inputInfo();

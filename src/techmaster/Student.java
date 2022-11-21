@@ -20,5 +20,13 @@ public class Student extends Person {
         this.level = new Scanner(System.in).nextLine();
     }
 
-
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", level='" + level + '\'' +
+                '}';
+    }
 }
