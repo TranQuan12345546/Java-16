@@ -1,4 +1,4 @@
-package techmaster;
+package techmaster.entity;
 
 public class Lecture extends Person {
     @Override

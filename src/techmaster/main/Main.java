@@ -1,14 +1,21 @@
-package techmaster;
+package techmaster.main;
+
+import techmaster.entity.ClassTech;
+import techmaster.entity.TechMaster;
+import techmaster.entity.Lecture;
+import techmaster.entity.Manager;
+import techmaster.entity.Student;
+import techmaster.logic.LogicHandle;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    static TechMaster techMaster;
-    static Scanner sc = new Scanner(System.in);
+    public static TechMaster techMaster;
+    public static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         while (true) {
-            showMenu();
+            LogicHandle.showMenu();
             int choose;
             do {
                 choose = Integer.parseInt(sc.nextLine());
@@ -32,7 +39,7 @@ public class Main {
                     setLevel();
                     break;
                 case 5:
-                    removeStudent();
+                    LogicHandle.removeStudent();
                     break;
                 case 6:
                     System.exit(0);
@@ -40,48 +47,9 @@ public class Main {
         }
     }
 
-    private static void showMenu() {
-        System.out.println("-----------CHƯƠNG TRÌNH QUẢN LÝ TECH-MASTER--------");
-        System.out.println("1. Nhập thông tin trung tâm");
-        System.out.println("2. Hiển thị thông tin trung tâm");
-        System.out.println("3. Thêm học viên");
-        System.out.println("4. Cập nhật thông tin học lực của học viên");
-        System.out.println("5. Xoá học viên khỏi lớp học");
-        System.out.println("6. Thoát chương trình");
-    }
 
-    private static void removeStudent() {
-        ArrayList<Student> student = techMaster.getClassTech().getStudents();
-        int num = 0;
-        boolean flag = true;
-        do {
-            do {
-                try {
-                    System.out.println("Nhập mã học viên cần xoá: ");
-                    num = Integer.parseInt(sc.nextLine());
-                    if (num < 100) {
-                        System.out.println("Không tồn tại mã học viên này");
-                    }
-                } catch (Exception e) {
-                    System.out.println("Bạn cần nhập vào 1 số tự nhiên");
-                }
-            } while (num < 100);
 
-            for (Student i : student) {
-                if (num == i.getId()) {
-                    student.remove(i);
-                    flag = false;
-                    break;
-                }
-                System.out.println("Không có học viên nào mang mã " + num);
-            }
-        } while (flag);
 
-        System.out.println("Danh sách học viên hiện tại của lớp là: ");
-        for (Student i : student) {
-            System.out.println(i);
-        }
-    }
 
     private static void setLevel() {
         System.out.println("Nhập học lực mới: ");

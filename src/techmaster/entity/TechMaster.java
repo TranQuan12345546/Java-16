@@ -1,4 +1,5 @@
-package techmaster;
+package techmaster.entity;
+
 
 public class TechMaster {
     private Manager manager;

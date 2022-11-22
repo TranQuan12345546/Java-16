@@ -1,4 +1,5 @@
-package techmaster;
+package techmaster.entity;
+
 
 import java.util.ArrayList;
 import java.util.Scanner;
