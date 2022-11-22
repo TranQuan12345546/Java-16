@@ -4,13 +4,21 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    static ArrayList<Student> students = new ArrayList<>();
     public static void main(String[] args) {
-        ArrayList<Student> students = new ArrayList<>();
-        Scanner sc = new Scanner(System.in);
+        addInfo();
+        askForInput();
+    }
+
+    private static void addInfo() {
         Student student = new Student();
         student.inputInfo();
         students.add(student);
+    }
+
+    private static void askForInput() {
         do {
+            Scanner sc = new Scanner(System.in);
             System.out.println("Bạn có muốn thêm thông tin người tiếp theo không?");
             System.out.println("1. Có");
             System.out.println("2. Không");
@@ -40,4 +48,5 @@ public class Main {
             }
         } while (true);
     }
+
 }
