@@ -10,7 +10,6 @@ public class Student {
     private double scoreMath;
     private double scorePhysic;
     private double scoreChemistry;
-    private double avg;
 
     public Student() {
         this.id = STUDENT_ID;
@@ -53,12 +52,47 @@ public class Student {
         this.scoreChemistry = scoreChemistry;
     }
 
-    public double getAvg() {
-        return avg;
-    }
 
-    public void setAvg() {
-        this.avg = avg;
+
+    public void inputInfo(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Mời nhập tên học sinh: ");
+        this.name = sc.nextLine();
+        do {
+            try {
+                System.out.println("Nhập điểm môn Toán: ");
+                this.scoreMath = Double.parseDouble(sc.nextLine());
+                if (scoreMath <= 0 || scoreMath > 10) {
+                    System.out.println("Điểm không thể nhỏ hơn 0 hoặc lớn hơn 10");
+                }
+            } catch (Exception e) {
+                System.out.println("Bạn hãy nhập vào 1 số tự nhiên");
+            }
+        } while (scoreMath <= 0 || scoreMath > 10);
+
+        do {
+            try {
+                System.out.println("Nhập điểm môn Lý: ");
+                this.scorePhysic = Double.parseDouble(sc.nextLine());
+                if (scorePhysic <= 0 || scorePhysic > 10) {
+                    System.out.println("Điểm không thể nhỏ hơn 0");
+                }
+            } catch (Exception e) {
+                System.out.println("Bạn hãy nhập vào 1 số tự nhiên");
+            }
+        } while (scorePhysic <= 0 || scorePhysic > 10);
+
+        do {
+            try {
+                System.out.println("Nhập điểm môn Hoá: ");
+                this.scoreChemistry = Double.parseDouble(sc.nextLine());
+                if (scoreChemistry <= 0 || scoreChemistry > 10) {
+                    System.out.println("Điểm không thể nhỏ hơn 0");
+                }
+            } catch (Exception e) {
+                System.out.println("Bạn hãy nhập vào 1 số tự nhiên");
+            }
+        } while (scoreChemistry <= 0 || scoreChemistry > 10);
     }
 
     public double avg2(double scoreMath, double scoreChemistry, double scorePhysic) {
@@ -68,16 +102,11 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "name='" + name + '\'' +
-                ", avg=" + avg +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", scoreMath=" + scoreMath +
+                ", scorePhysic=" + scorePhysic +
+                ", scoreChemistry=" + scoreChemistry +
                 '}';
     }
-
-    public void inputInfo(){
-        System.out.println("Mời nhập tên học sinh: ");
-        this.name = new Scanner(System.in).nextLine();
-        System.out.println("Nhập điểm môn toán: ");
-        this.scoreMath = new Scanner(System.in).nextDouble();
-    }
-
 }
