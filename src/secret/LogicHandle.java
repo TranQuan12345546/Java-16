@@ -57,7 +57,7 @@ public class LogicHandle {
     }
 
     private void showCouple() {
-        System.out.print(coupleQuesAnsArrayList.get(0));;
+        System.out.print(coupleQuesAnsArrayList);
     }
 
     private void findQuestion() {
