@@ -57,12 +57,13 @@ public class Question implements Inputable{
         do {
             try {
                 choice = Integer.parseInt(sc.nextLine());
+                if (choice < 1 || choice > 5) {
+                    System.out.println("Lựa chọn không hợp lệ, vui lòng chọn lại");
+                }
             } catch (Exception e) {
                 System.out.println("Bạn cần nhập vào 1 số");
             }
-            if (choice < 1 || choice > 5) {
-                System.out.println("Lựa chọn không hợp lệ, vui lòng chọn lại");
-            }
+
         } while (choice < 1 || choice > 5);
         switch (choice) {
             case 1:

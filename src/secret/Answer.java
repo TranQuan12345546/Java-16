@@ -2,7 +2,7 @@ package secret;
 
 import java.util.Scanner;
 
-public class Answer extends Question implements Inputable{
+public class Answer implements Inputable{
     public static int ID_ANSWER = 100;
 
     private final int id;
@@ -27,7 +27,6 @@ public class Answer extends Question implements Inputable{
 
     @Override
     public void input() {
-        super.input();
         System.out.println("Mời nhập nội dung câu trả lời: ");
         this.answer = new Scanner(System.in).nextLine();
     }
@@ -36,8 +35,6 @@ public class Answer extends Question implements Inputable{
     public String toString() {
         return "Answer{" +
                 "id=" + id +
-                ", topic='" + topic + '\'' +
-                ", content='" + content + '\'' +
                 ", answer='" + answer + '\'' +
                 '}';
     }
