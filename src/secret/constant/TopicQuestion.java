@@ -1,4 +1,4 @@
-package secret;
+package secret.constant;
 
 public enum TopicQuestion {
     JAVA_CORE("Java Core"),
@@ -7,7 +7,7 @@ public enum TopicQuestion {
     JAVA_COLLECTIONS("Java Collections"),
     EXCEPTION("Exception");
 
-    String value;
+    public String value;
 
     TopicQuestion(String value) {
         this.value = value;

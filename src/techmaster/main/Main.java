@@ -1,7 +1,6 @@
 package techmaster.main;
 
 import techmaster.entity.TechMaster;
-import techmaster.entity.Student;
 import techmaster.logic.LogicHandle;
 
 import java.util.Scanner;

@@ -1,8 +1,8 @@
-package secret;
+package secret.entity;
 
 import java.util.Scanner;
 
-public class Answer implements Inputable{
+public class Answer implements Inputable {
     public static int ID_ANSWER = 100;
 
     private final int id;

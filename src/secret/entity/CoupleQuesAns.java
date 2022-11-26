@@ -1,6 +1,6 @@
-package secret;
+package secret.entity;
 
-public class CoupleQuesAns implements Inputable{
+public class CoupleQuesAns implements Inputable {
 
     public static int ID_COUPLE = 100;
     private final int id;
