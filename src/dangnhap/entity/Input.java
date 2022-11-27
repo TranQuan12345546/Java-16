@@ -1,4 +1,4 @@
-package dangnhap;
+package dangnhap.entity;
 
 import java.util.Scanner;
 

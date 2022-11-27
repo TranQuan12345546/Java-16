@@ -1,8 +1,12 @@
-package dangnhap;
+package dangnhap.entity;
+
+import dangnhap.logic.LogInLogic;
+import dangnhap.logic.LogicHandle;
+import dangnhap.logic.RegisterLogic;
 
 import java.util.Scanner;
 
-import static dangnhap.Main.accounts;
+import static dangnhap.main.Main.accounts;
 
 public class View {
     public void mainMenu() {

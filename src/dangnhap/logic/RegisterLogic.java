@@ -1,9 +1,11 @@
-package dangnhap;
+package dangnhap.logic;
+
+import dangnhap.entity.Account;
 
 import java.util.Scanner;
 
-import static dangnhap.LogicHandle.patternMatches;
-import static dangnhap.Main.accounts;
+import static dangnhap.logic.LogicHandle.patternMatches;
+import static dangnhap.main.Main.accounts;
 
 public class RegisterLogic {
 

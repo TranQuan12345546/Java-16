@@ -1,4 +1,7 @@
-package dangnhap;
+package dangnhap.main;
+
+import dangnhap.entity.Account;
+import dangnhap.entity.View;
 
 import java.util.ArrayList;
 

@@ -1,10 +1,12 @@
-package dangnhap;
+package dangnhap.logic;
+
+import dangnhap.entity.Account;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import static dangnhap.Main.accounts;
-import static dangnhap.Main.view;
+import static dangnhap.main.Main.accounts;
+import static dangnhap.main.Main.view;
 
 public class LogicHandle {
     public static boolean patternMatches(String string, String regexPattern) {
