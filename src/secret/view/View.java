@@ -19,7 +19,7 @@ public class View {
         System.out.println("8. Thoát chương trình.");
         System.out.print("Chọn: ");
     }
-
+// comparable comparator generic
     static Scanner sc = new Scanner(System.in);
     public void chooseMenu(QuesAnsLogic quesAnsLogic, QuestionLogic questionLogic, AnswerLogic answerLogic) {
         int choice = 0;
