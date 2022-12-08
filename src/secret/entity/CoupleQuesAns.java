@@ -1,34 +1,50 @@
 package secret.entity;
 
-public class CoupleQuesAns implements Inputable {
+public class CoupleQuesAns {
 
-    public static int ID_COUPLE = 100;
+    public static int ID_COUPLE = 0;
+
     private final int id;
-    private Question question;
-    private Answer answer;
+    private String question;
+    private String topic;
+    private String answer;
 
     public CoupleQuesAns() {
-        this.id = ID_COUPLE;
-        ID_COUPLE++;
+        this.id = ID_COUPLE++;
+    }
+
+    public CoupleQuesAns(String question, String topic, String answer) {
+        this.id = ID_COUPLE++;
+        this.question = question;
+        this.topic = topic;
+        this.answer = answer;
     }
 
     public int getId() {
         return id;
     }
 
-    public Question getQuestion() {
+    public String getQuestion() {
         return question;
     }
 
-    public void setQuestion(Question question) {
+    public void setQuestion(String question) {
         this.question = question;
     }
 
-    public Answer getAnswer() {
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public String getAnswer() {
         return answer;
     }
 
-    public void setAnswer(Answer answer) {
+    public void setAnswer(String answer) {
         this.answer = answer;
     }
 
@@ -36,20 +52,9 @@ public class CoupleQuesAns implements Inputable {
     public String toString() {
         return "CoupleQuesAns{" +
                 "id=" + id +
-                ", question=" + question +
-                ", answer=" + answer +
+                ", question='" + question + '\'' +
+                ", topic='" + topic + '\'' +
+                ", answer='" + answer + '\'' +
                 '}';
     }
-
-    @Override
-    public void input() {
-        Question question = new Question();
-        question.input();
-        this.question = question;
-        Answer answer = new Answer();
-        answer.input();
-        this.answer = answer;
-    }
-
-
 }

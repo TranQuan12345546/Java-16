@@ -11,8 +11,8 @@ import static dangnhap.main.Main.accounts;
 public class View {
     public void mainMenu() {
         Scanner sc = new Scanner(System.in);
-        RegisterLogic registerLogic = new RegisterLogic();
-        registerLogic.inputDefaultAccount();
+//        RegisterLogic registerLogic = new RegisterLogic();
+//        registerLogic.inputDefaultAccount();
         while (true) {
             showMenu();
             int choose = LogicHandle.checkNumberException(sc, 1, 2);
@@ -35,13 +35,13 @@ public class View {
     public void register(Scanner sc) {
         RegisterLogic registerLogic = new RegisterLogic();
         Account account = new Account();
-        registerLogic.register(sc, account);
+//        registerLogic.register(sc, account);
         accounts.add(account);
     }
 
     public void logIn(Scanner sc) {
         LogInLogic logInLogic = new LogInLogic();
-        logInLogic.logIn(sc);
+//        logInLogic.logIn(sc);
     }
 
     public void LoginView() {

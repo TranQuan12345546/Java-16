@@ -1,10 +1,12 @@
 package secret.view;
 
-import secret.logichandle.AnswerLogic;
+import secret.entity.CoupleQuesAns;
 import secret.logichandle.QuesAnsLogic;
-import secret.logichandle.QuestionLogic;
+import secret.logichandle.QuizzLogic;
 
 import java.util.Scanner;
+
+import static secret.logichandle.QuesAnsLogic.checkNumberException;
 
 public class View {
     public void showMenu() {
@@ -20,38 +22,42 @@ public class View {
         System.out.print("Chọn: ");
     }
 // comparable comparator generic
-    static Scanner sc = new Scanner(System.in);
-    public void chooseMenu(QuesAnsLogic quesAnsLogic, QuestionLogic questionLogic, AnswerLogic answerLogic) {
-        int choice = 0;
-        do {
-            try {
-                choice = Integer.parseInt(sc.nextLine());
-            } catch (Exception e) {
-                System.out.println("Bạn cần nhập vào 1 số");
-            }
-        } while (choice < 1 || choice > 8);
+    Scanner sc = new Scanner(System.in);
+    public void chooseMenu(QuesAnsLogic quesAnsLogic, CoupleQuesAns coupleQuesAns) {
+        int choice = checkNumberException(sc, 1, 8);
         switch (choice) {
             case 1:
-                quesAnsLogic.addQuesAns();
+                quesAnsLogic.addQuesAns(sc, coupleQuesAns);
                 break;
             case 2:
                 quesAnsLogic.showCouple();
                 break;
             case 3:
-                quesAnsLogic.editQuesAns(questionLogic, answerLogic);
+                quesAnsLogic.editQuesAns(sc);
                 break;
             case 4:
-                questionLogic.findQuestion();
+                quesAnsLogic.findQuestion(sc);
                 break;
             case 5:
                 break;
             case 6:
                 break;
             case 7:
+                QuizzLogic quizzLogic = new QuizzLogic();
+                quizzLogic.quizzLogic(sc);
                 break;
             case 8:
                 System.exit(0);
                 break;
         }
+    }
+
+    public void viewTopic() {
+        System.out.println("Chọn chủ đề: ");
+        System.out.println("1. Java Core");
+        System.out.println("2. OOP - Hướng đối tượng");
+        System.out.println("3. Java Threads");
+        System.out.println("4. Java Collections");
+        System.out.println("5. Exception");
     }
 }

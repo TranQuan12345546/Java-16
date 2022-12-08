@@ -1,16 +1,20 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+
+
+import java.util.Random;
 
 public class Rectangle {
     public static void main(String[] args) {
-        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(1,2,3,4));
-        ArrayList<Integer> list1 = new ArrayList<>(Arrays.asList(1,2,3,4,6,7));
-        list.removeAll(list1);
-        for (int i : list) {
-            System.out.println(i);
+        Random rd = new Random();
+        int iNewNumber = 0, iPrevious = -1;
+        for (int i = 0; i < 10; ) {
+            iNewNumber = rd.nextInt(100);
+            if (iNewNumber != iPrevious){
+                i++;
+                iPrevious = iNewNumber;
+                System.out.println("Item " + i + ":" + iNewNumber);
+            }
         }
     }
 }
