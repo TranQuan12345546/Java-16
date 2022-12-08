@@ -1,4 +1,7 @@
-package test2;
+package test2.entity;
+
+import test2.entity.Book;
+import test2.entity.Reader;
 
 import java.util.List;
 

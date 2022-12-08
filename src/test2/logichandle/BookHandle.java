@@ -1,10 +1,13 @@
-package test2;
+package test2.logichandle;
+
+import test2.Service;
+import test2.entity.Book;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
-public class BookHandle implements Service<Book>{
+public class BookHandle implements Service<Book> {
     @Override
     public void insertObj(Book Obj, List<Book> Objs) {
         Objs.add(Obj);

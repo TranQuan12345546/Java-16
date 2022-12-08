@@ -1,10 +1,13 @@
-package test2;
+package test2.logichandle;
+
+import test2.Service;
+import test2.entity.Reader;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
-public class ReaderHandle implements Service<Reader>{
+public class ReaderHandle implements Service<Reader> {
     @Override
     public void insertObj(Reader Obj, List<Reader> Objs) {
 
